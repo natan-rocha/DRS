@@ -40,8 +40,8 @@ IF OBJECT_ID('tempdb..#backupdetails') IS NOT NULL DROP TABLE #backupdetails;
 
 	Select	CASE Type
 			when 'D' then LTRIM(RTRIM(',MOVE '+CHAR(39)+LogicalName+CHAR(39)+' TO '+CHAR(39)+@DEST_MDF+'\'+LogicalName+'_DRS.mdf'+CHAR(39)))  
-			when 'N' then LTRIM(RTRIM(',MOVE '+CHAR(39)+LogicalName+CHAR(39)+' TO '+CHAR(39)+@DEST_MDF+'\'+LogicalName+'_DRS.ldf'+CHAR(39)))
-			when 'L' then LTRIM(RTRIM(',MOVE '+CHAR(39)+LogicalName+CHAR(39)+' TO '+CHAR(39)+@DEST_MDF+'\'+LogicalName+'_DRS.ldf'+CHAR(39)))
+			when 'N' then LTRIM(RTRIM(',MOVE '+CHAR(39)+LogicalName+CHAR(39)+' TO '+CHAR(39)+@DEST_NDF+'\'+LogicalName+'_DRS.ndf'+CHAR(39)))
+			when 'L' then LTRIM(RTRIM(',MOVE '+CHAR(39)+LogicalName+CHAR(39)+' TO '+CHAR(39)+@DEST_LDF+'\'+LogicalName+'_DRS.ldf'+CHAR(39)))
 			end as nome
 			from #backupdetails
 
